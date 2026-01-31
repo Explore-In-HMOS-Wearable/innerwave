@@ -1,0 +1,20 @@
+{
+  "routerMap": [
+    {
+      "name": "TrainingDetailPage",
+      "pageSourceFile": "src/main/ets/pages/Training/TrainingDetailView.ets",
+      "buildFunction": "TrainingDetailPageBuilder"
+    },
+    {
+      "name": "TrainingTimerPage",
+      "pageSourceFile": "src/main/ets/pages/Training/TrainingTimerView.ets",
+      "buildFunction": "TrainingTimerPageBuilder"
+    },
+    {
+      "name": "CongratzPage",
+      "pageSourceFile": "src/main/ets/pages/Training/TrainingResultView.ets",
+      "buildFunction": "CongratzPageBuilder"
+    }
+
+  ]
+}

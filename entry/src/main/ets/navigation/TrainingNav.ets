@@ -1,0 +1,1 @@
+export const trainingStack: NavPathStack = new NavPathStack();

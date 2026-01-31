@@ -1,0 +1,16 @@
+{
+  "float": [
+    { "name": "hero", "value": "80px" },
+    { "name": "headline", "value": "40px" },
+    { "name": "title", "value": "36px" },
+    { "name": "subtitle", "value": "32px" },
+    { "name": "content", "value": "28px" },
+    { "name": "paragraph", "value": "24px" },
+
+    { "name": "pad_mini", "value": "8px" },
+    { "name": "pad_small", "value": "16px" },
+    { "name": "pad_med", "value": "24px" },
+    { "name": "pad_large", "value": "32px" }
+  ]
+}
+

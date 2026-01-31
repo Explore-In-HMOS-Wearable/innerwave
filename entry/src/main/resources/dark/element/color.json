@@ -1,0 +1,44 @@
+{
+  "color": [
+    {
+      "name": "aquamarine",
+      "value": "#65FFF0"
+    },
+    {
+      "name": "turquoise",
+      "value": "#2AC2B3"
+    },
+    {
+      "name": "cerulean",
+      "value": "#00B6E7"
+    },
+    {
+      "name": "pure_white",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "tundora",
+      "value": "#404040"
+    },
+    {
+      "name": "mine_shaft",
+      "value": "#262626"
+    },
+    {
+      "name": "cod_gray",
+      "value": "#0F0F0F"
+    },
+    {
+      "name": "pure_black",
+      "value": "#000000"
+    },
+    {
+      "name": "international_orange",
+      "value": "#FE5602"
+    },
+    {
+      "name": "scarlet",
+      "value": "#FB2605"
+    }
+  ]
+}
