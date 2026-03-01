@@ -1,3 +1,5 @@
+import { ColorConstants } from '../constants/ColorConstants';
+
 @Component
 export struct TrackerDisplay {
   @Prop title: string = '';
@@ -7,12 +9,12 @@ export struct TrackerDisplay {
     Column() {
       Text(this.title)
         .fontSize($r('app.float.hero'))
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
         .fontWeight(FontWeight.Bolder)
 
       Text(this.subtitle)
         .fontSize($r('app.float.content'))
-        .fontColor($r('app.color.tundora'))
+        .fontColor(ColorConstants.TUNDORA)
         .fontWeight(FontWeight.Bold)
     }
   }

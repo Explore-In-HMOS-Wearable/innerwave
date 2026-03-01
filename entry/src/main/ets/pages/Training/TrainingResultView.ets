@@ -1,17 +1,19 @@
 // TrainingResultView.ets
 import { trainingStack } from '../../navigation/TrainingNav';
-import { TrainingItem } from '../../model/TrainingItem';
+import { TrainingModel } from '../../model/TrainingModel';
 import { common } from '@kit.AbilityKit';
 import {AudioService} from '../../services/TrainingMusicService';
 import { TrainingStatsItem } from '../../components/TrainingStatsItem';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
 
 export class CongratzParams {
-  item: TrainingItem;
+  item: TrainingModel;
   repsText: string;
   caloriesText: string;
   timeText: string;
 
-  constructor(item: TrainingItem, repsText: string, caloriesText: string, timeText: string) {
+  constructor(item: TrainingModel, repsText: string, caloriesText: string, timeText: string) {
     this.item = item;
     this.repsText = repsText;
     this.caloriesText = caloriesText;
@@ -19,8 +21,8 @@ export class CongratzParams {
   }
 }
 
-interface TrainingItemDTO {
-  title?: string;
+interface TrainingModelDTO {
+  name?: string;
   duration?: string;
   difficulty?: string;
   calories?: string;
@@ -37,13 +39,13 @@ interface CongratzDTO {
 export function CongratzPageBuilder(): void {
   CongratzPage();
 }
-// For mp3 media, Singleton Pattern
+
 const audioService = AudioService.getInstance();
 
 @Component
 struct CongratzPage {
 
-  @State item: TrainingItem = new TrainingItem('training', 'Training', '0 min', 'Easy', '~0');
+  @State item: TrainingModel = new TrainingModel('Training', '0 min', 'Easy', '~0');
   @State repsText: string = '0/0';
   @State caloriesText: string = '~0';
   @State timeText: string = '0m';
@@ -78,7 +80,7 @@ struct CongratzPage {
     }
 
     if (dto.item !== undefined) {
-      const it: TrainingItem | null = this._toTrainingItem(dto.item as Object);
+      const it: TrainingModel | null = this._toTrainingModel(dto.item as Object);
       if (it !== null) {
         this.item = it;
       }
@@ -116,16 +118,14 @@ struct CongratzPage {
           Text('Congrats!')
             .width('100%')
             .fontSize(18)
-            .fontColor($r('app.color.pure_white'))
+            .fontColor(ColorConstants.PURE_WHITE)
             .fontWeight(FontWeight.Bold)
             .textAlign(TextAlign.Center);
 
-          Text(`You have completed the ${this.item.title} training.`)
-            //.width('100%')
+          Text(`You have completed the ${this.item.name} training.`)
             .fontSize(12)
-            .fontColor($r('app.color.chateau_green'))
+            .fontColor(ColorConstants.CHATEAU_GREEN)
             .textAlign(TextAlign.Center)
-            //.maxLines(2);
         }
         .offset({y:-76})
         .height('25%')
@@ -135,14 +135,14 @@ struct CongratzPage {
           Row({ space: 6 }) {
             Row({ space: 8 }) {
               TrainingStatsItem({
-                icon: $r('app.media.bolt'),
+                icon: IconConstants.BOLT,
                 label: 'Reps',
                 value: this.repsText
               })
 
               Text('✓')
                 .fontSize(18)
-                .fontColor($r('app.color.pure_white'))
+                .fontColor(ColorConstants.PURE_WHITE)
                 .opacity(0.85)
                 .fontWeight(FontWeight.Bold)
             }
@@ -151,14 +151,14 @@ struct CongratzPage {
 
             Row({ space: 8 }) {
               TrainingStatsItem({
-                icon: $r('app.media.sun_max'),
+                icon: IconConstants.SUN_MAX,
                 label: 'Calories',
                 value: this.caloriesText
               }).offset({x:-10})
 
               Text('✓')
                 .fontSize(18)
-                .fontColor($r('app.color.pure_white'))
+                .fontColor(ColorConstants.PURE_WHITE)
                 .opacity(0.85)
                 .fontWeight(FontWeight.Bold)
             }
@@ -170,14 +170,14 @@ struct CongratzPage {
 
           Row({ space: 8 }) {
             TrainingStatsItem({
-              icon: $r('app.media.clock'),
+              icon: IconConstants.CLOCK,
               label: 'Time',
               value: this.timeText
             })
 
             Text('✓')
               .fontSize(18)
-              .fontColor($r('app.color.pure_white'))
+              .fontColor(ColorConstants.PURE_WHITE)
               .opacity(0.85)
               .fontWeight(FontWeight.Bold)
           }
@@ -185,13 +185,13 @@ struct CongratzPage {
           .justifyContent(FlexAlign.Center)
         }
         .offset({ y: 10 })
-        .backgroundColor($r('app.color.pure_black'))
+        .backgroundColor(ColorConstants.PURE_BLACK)
 
         Column() {
           Button() {
             Text('Home')
               .fontSize(14)
-              .fontColor($r('app.color.pure_white'))
+              .fontColor(ColorConstants.PURE_WHITE)
               .fontWeight(FontWeight.Bold);
           }
           .width(100)
@@ -202,7 +202,7 @@ struct CongratzPage {
         }
         .offset({y:83})
       }
-      .backgroundColor($r('app.color.pure_black'))
+      .backgroundColor(ColorConstants.PURE_BLACK)
       .width('100%')
       .height('100%')
     }
@@ -211,28 +211,18 @@ struct CongratzPage {
     .hideToolBar(true);
   }
 
-  private _toTrainingItem(v: Object): TrainingItem | null {
-    if (v instanceof TrainingItem) {
-      return v as TrainingItem;
+  private _toTrainingModel(v: Object): TrainingModel | null {
+    if (v instanceof TrainingModel) {
+      return v as TrainingModel;
     }
 
-    const o: TrainingItemDTO = v as TrainingItemDTO;
-    if (typeof o.title === 'string' && typeof o.duration === 'string') {
+    const o: TrainingModelDTO = v as TrainingModelDTO;
+
+    if (typeof o.name === 'string' && typeof o.duration === 'string') {
       const diff = (typeof o.difficulty === 'string') ? o.difficulty : 'Easy';
       const cal = (typeof o.calories === 'string') ? o.calories : '~0';
-      const id = toTrainingId(o.title);
-      return new TrainingItem(id, o.title, o.duration, diff, cal);
-
+      return new TrainingModel(o.name, o.duration, diff, cal);
     }
     return null;
   }
-}
-
-function toTrainingId(title: string): string {
-  const trimmed = title.trim();
-  if (trimmed.length === 0) {
-    return 'training';
-  }
-  const words = trimmed.split(/\s+/);
-  return words[0].toLowerCase() + words.slice(1).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
 }

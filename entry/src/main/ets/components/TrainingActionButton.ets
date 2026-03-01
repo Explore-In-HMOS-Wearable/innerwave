@@ -1,21 +1,24 @@
-import { TrainingItem } from '../model/TrainingItem';
+import { TrainingModel } from '../model/TrainingModel';
 import { trainingStack } from '../navigation/TrainingNav';
+import { ColorConstants } from '../constants/ColorConstants';
+import { IconConstants } from '../constants/IconConstants';
+import { SizeConstants } from '../constants/SizeConstants';
 
 @Component
 export struct TrainingActionButtons {
-  @Prop item: TrainingItem;
+  @Prop item: TrainingModel;
   onBack: () => void = () => {};
 
   build() {
-    Row({ space: $r('app.float.pad_small') }) {
+    Row({ space: SizeConstants.PAD_SMALL }) {
       Button({ type: ButtonType.Capsule }) {
-        Image($r('app.media.chevron_left'))
-          .fillColor($r('app.color.pure_white'))
+        Image(IconConstants.CHEVRON_LEFT)
+          .fillColor(ColorConstants.PURE_WHITE)
           .width('30px')
           .aspectRatio(1)
       }
-      .padding($r('app.float.pad_med'))
-      .backgroundColor($r('app.color.cod_gray'))
+      .padding(SizeConstants.PAD_MED)
+      .backgroundColor(ColorConstants.COD_GRAY)
       .onClick(() => this.onBack())
 
       Button({ type: ButtonType.Capsule }) {
@@ -23,17 +26,11 @@ export struct TrainingActionButtons {
           .fontSize($r('app.float.content'))
           .fontWeight(FontWeight.Bold)
       }
-      .backgroundColor($r('app.color.cerulean'))
-      .padding({
-        top: $r('app.float.pad_med'),
-        bottom: $r('app.float.pad_med'),
-        left: $r('app.float.pad_large'),
-        right: $r('app.float.pad_large')
-      })
+      .backgroundColor(ColorConstants.CERULEAN)
+      .padding(SizeConstants.PAD_BTN_PRIMARY)
       .onClick(() => {
         trainingStack.pushPath({ name: 'TrainingTimerPage', param: this.item });
       })
-
     }
     .width(130)
     .justifyContent(FlexAlign.Center)

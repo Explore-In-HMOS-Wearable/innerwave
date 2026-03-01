@@ -1,3 +1,6 @@
+import { ColorConstants } from '../constants/ColorConstants';
+import { SizeConstants } from '../constants/SizeConstants';
+
 @Component
 export struct MenuAboutItem {
   title: string = '';
@@ -12,14 +15,14 @@ export struct MenuAboutItem {
 
       Text(this.value)
         .fontSize($r('app.float.paragraph'))
-        .fontColor($r('app.color.tundora'))
+        .fontColor(ColorConstants.TUNDORA)
         .textAlign(TextAlign.End)
         .layoutWeight(2)
         .maxLines(2)
     }
     .width('100%')
     .alignItems(VerticalAlign.Top)
-    .padding($r('app.float.pad_small'))
+    .padding(SizeConstants.PAD_SMALL)
 
   }
 }

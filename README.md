@@ -1,5 +1,3 @@
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
-
 # Innerwave - [Smart-Wearable]
 
 InnerWave is a comprehensive fitness and health tracking application. It empowers users to manage their daily physical activities, monitor workout performance, and track vital signs through a unified interface. By leveraging real-time sensor data and a customizable goal-setting system.

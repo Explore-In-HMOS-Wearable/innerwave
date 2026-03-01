@@ -1,48 +1,44 @@
 import { trainingStack } from '../navigation/TrainingNav';
-import { TrainingItem } from '../model/TrainingItem';
+import { TrainingModel } from '../model/TrainingModel';
+import { ColorConstants } from '../constants/ColorConstants';
+import { SizeConstants } from '../constants/SizeConstants';
 
 @Component
 export struct TrainingRowItem {
-  @Prop item: TrainingItem;
+  @Prop item: TrainingModel;
 
   build() {
     Row() {
-      Stack({ alignContent: Alignment.Center }) {
-        Circle()
-          .width('64px')
-          .height('64px')
-          .fill($r('app.color.mine_shaft'))
+      Image(this.item.thumbnail)
+        .width('64px')
+        .height('64px')
+        .objectFit(ImageFit.Cover)
+        .borderRadius(9999)
+        .clip(true)
 
-        Image($r('app.media.bolt'))
-          .width('32px')
-          .height('32px')
-          .fillColor($r('app.color.pure_white'))
-          .objectFit(ImageFit.Contain)
-      }
+      Blank().width(SizeConstants.PAD_MINI)
 
-      Blank().width('8px')
-
-      Text(this.item.title)
+      Text(this.item.name)
         .fontSize($r('app.float.content'))
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
         .fontWeight(FontWeight.Medium)
 
       Blank().layoutWeight(1)
 
       Text(this.item.duration)
         .fontSize($r('app.float.paragraph'))
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
     }
     .layoutWeight(1)
-    .padding($r('app.float.pad_med'))
+    .padding(SizeConstants.PAD_MED)
     .margin({
-      top: $r('app.float.pad_mini'),
-      bottom: $r('app.float.pad_mini'),
-      right: $r('app.float.pad_large'),
-      left: $r('app.float.pad_large')
+      top: SizeConstants.PAD_MINI,
+      bottom: SizeConstants.PAD_MINI,
+      right: SizeConstants.PAD_MED,
+      left: SizeConstants.PAD_MED
     })
     .borderRadius(999)
-    .backgroundColor($r('app.color.cod_gray'))
+    .backgroundColor(ColorConstants.COD_GRAY)
     .onClick(() => {
       trainingStack.pushPathByName('TrainingDetailPage', this.item);
     })

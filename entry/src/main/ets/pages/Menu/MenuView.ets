@@ -1,5 +1,8 @@
 import { MenuNavigation } from '../../components/MenuNavigation';
 import { MenuOption } from '../../components/MenuOption';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct MenuView {
@@ -10,39 +13,34 @@ export struct MenuView {
     Column() {
       Text('Menu')
         .fontSize($r('app.float.title'))
-        .fontColor($r('app.color.international_orange'))
+        .fontColor(ColorConstants.INTERNATIONAL_ORANGE)
       Blank()
       MenuNavigation({
-        icon: $r('app.media.tracking'),
+        icon: IconConstants.TRACKING,
         label: 'Tracking',
         targetIndex: 1
       })
 
       MenuNavigation({
-        icon: $r('app.media.training'),
+        icon: IconConstants.TRAINING,
         label: 'Trainings',
         targetIndex: 2
       })
 
       MenuOption({
-        icon: $r('app.media.settings'),
+        icon: IconConstants.SETTINGS,
         label: 'Settings',
         targetIndex: 1
       })
 
       MenuOption({
-        icon: $r('app.media.bolt'),
+        icon: IconConstants.INFO_CIRCLE,
         label: 'About',
         targetIndex: 2
       })
       Blank()
     }
-    .padding({
-      top: '32px',
-      bottom: '32px',
-      left: '64px',
-      right: '64px'
-    })
+    .padding(SizeConstants.PAD_SCREEN)
   }
 }
 

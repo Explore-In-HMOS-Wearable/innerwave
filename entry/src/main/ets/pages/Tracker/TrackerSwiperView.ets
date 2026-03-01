@@ -1,4 +1,5 @@
 import { ArcDirection, ArcDotIndicator, ArcSwiper, ArcSwiperAttribute } from '@kit.ArkUI';
+import { ColorConstants } from '../../constants/ColorConstants';
 import { TrackerDailyView } from './TrackerDailyView';
 import { TrackerGoalView } from './TrackerGoalView';
 import { TrackerHubView } from './TrackerHubView';
@@ -24,8 +25,8 @@ export struct TrackerSwiperView {
     })
     .indicator(this.arcDotIndicator
       .arcDirection(ArcDirection.THREE_CLOCK_DIRECTION)
-      .itemColor($r('app.color.tundora'))
-      .selectedItemColor($r('app.color.pure_white'))
+      .itemColor(ColorConstants.TUNDORA)
+      .selectedItemColor(ColorConstants.PURE_WHITE)
       .maskColor(new LinearGradient([
         {
           color: Color.Transparent,

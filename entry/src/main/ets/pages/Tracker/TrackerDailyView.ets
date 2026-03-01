@@ -2,13 +2,16 @@ import { TrackerDisplay } from '../../components/TrackerDisplay';
 import { TrackerGoal } from '../../components/TrackerGoal';
 import { TrackerHeader } from '../../components/TrackerHeader';
 import { TrackerViewModel } from '../../viewmodel/TrackerViewModel';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct TrackerDailyView {
   @Consume('trackerViewModel') trackerViewModel: TrackerViewModel;
   title: string = 'Daily';
-  imagePath: Resource = $r('app.media.calender');
-  color: Resource = $r('app.color.chateau_green');
+  imagePath: Resource = IconConstants.CALENDER;
+  color: Resource = ColorConstants.CHATEAU_GREEN;
   subtitle: string = 'STEPS';
 
   build() {
@@ -37,7 +40,7 @@ export struct TrackerDailyView {
       }
       .width('100%')
       .aspectRatio(1)
-      .padding('48px')
+      .padding(SizeConstants.PAD_XL)
 
       Progress({
         value: this.trackerViewModel.data.dailySteps,
@@ -51,7 +54,7 @@ export struct TrackerDailyView {
           enableSmoothEffect: true
         })
         .color(this.color)
-        .backgroundColor($r('app.color.cod_gray'))
+        .backgroundColor(ColorConstants.COD_GRAY)
         .hitTestBehavior(HitTestMode.None)
     }
   }

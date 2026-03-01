@@ -1,5 +1,8 @@
 import { SettingOption } from '../../model/SettingModel';
 import { SettingsSoundView } from './SettingsSoundView';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct SettingsPage {
@@ -8,7 +11,7 @@ export struct SettingsPage {
   private options: SettingOption[] = [
     { name: 'SoundSettings',
       label: 'Sound',
-      icon: $r('app.media.speaker_wave_3')
+      icon: IconConstants.SPEAKER_WAVE_3
     }
   ];
 
@@ -24,28 +27,28 @@ export struct SettingsPage {
       Column() {
         Text('Settings')
           .fontSize($r('app.float.title'))
-          .fontColor($r('app.color.international_orange'))
+          .fontColor(ColorConstants.INTERNATIONAL_ORANGE)
         Blank()
         ForEach(this.options, (item: SettingOption) => {
-          Row({ space: 8 }) {
+          Row({ space: SizeConstants.PAD_MINI }) {
             Image(item.icon)
               .width('32px')
               .aspectRatio(1)
-              .fillColor($r('app.color.pure_white'))
+              .fillColor(ColorConstants.PURE_WHITE)
 
             Text(item.label)
               .fontSize($r('app.float.subtitle'))
-              .fontColor($r('app.color.pure_white'))
+              .fontColor(ColorConstants.PURE_WHITE)
 
             Blank()
 
-            Image($r('app.media.chevron_right'))
+            Image(IconConstants.CHEVRON_RIGHT)
               .width('16px')
               .aspectRatio(1)
-              .fillColor($r('app.color.pure_white'))
+              .fillColor(ColorConstants.PURE_WHITE)
           }
           .width('100%')
-          .padding($r('app.float.pad_small'))
+          .padding(SizeConstants.PAD_SMALL)
           .onClick(() => {
             this.settingsStack.pushPath({ name: item.name });
           });
@@ -56,12 +59,7 @@ export struct SettingsPage {
       .width('100%')
       .aspectRatio(1)
       .justifyContent(FlexAlign.Center)
-      .padding({
-        top: '32px',
-        bottom: '32px',
-        left: '64px',
-        right: '64px'
-      })
+      .padding(SizeConstants.PAD_SCREEN)
     }
     .navDestination(this.pageMap)
     .hideTitleBar(true)

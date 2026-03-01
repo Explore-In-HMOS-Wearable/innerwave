@@ -1,0 +1,31 @@
+export class IconConstants {
+  static readonly ACTIVITY: Resource = $r('app.media.activity');
+  static readonly CALENDER: Resource = $r('app.media.calender');
+  static readonly FIRE: Resource = $r('app.media.fire');
+  static readonly ROUTE_PLAN: Resource = $r('app.media.route_plan');
+  static readonly HEART_FILL: Resource = $r('app.media.heart_fill');
+  static readonly TRACKING: Resource = $r('app.media.tracking');
+  static readonly TRAINING: Resource = $r('app.media.training');
+  static readonly SETTINGS: Resource = $r('app.media.settings');
+  static readonly INFO_CIRCLE: Resource = $r('app.media.info_circle');
+  static readonly SPEAKER_WAVE_3: Resource = $r('app.media.speaker_wave_3');
+  static readonly CHEVRON_RIGHT: Resource = $r('app.media.chevron_right');
+  static readonly CHEVRON_LEFT: Resource = $r('app.media.chevron_left');
+  static readonly CHEVRON_DOWN: Resource = $r('app.media.chevron_down');
+  static readonly REPEAT: Resource = $r('app.media.repeat');
+  static readonly MINUS: Resource = $r('app.media.minus');
+  static readonly PLUS: Resource = $r('app.media.plus');
+  static readonly BOLT: Resource = $r('app.media.bolt');
+  static readonly SUN_MAX: Resource = $r('app.media.sun_max');
+  static readonly CLOCK: Resource = $r('app.media.clock');
+  static readonly PAUSE: Resource = $r('app.media.pause');
+  static readonly PLAY_FILL: Resource = $r('app.media.play_fill');
+  static readonly YOGA_GIF: Resource = $r('app.media.yoga_gif_deneme');
+  static readonly MORNING_YOGA: Resource = $r('app.media.morning_yoga');
+  static readonly FULL_BODY: Resource = $r('app.media.full_body');
+  static readonly CARDIO: Resource = $r('app.media.cardio');
+  static readonly MOBILITY: Resource = $r('app.media.mobility');
+  static readonly STRETCHING: Resource = $r('app.media.stretching');
+  static readonly CORE: Resource = $r('app.media.core');
+  static readonly LEG: Resource = $r('app.media.leg');
+}

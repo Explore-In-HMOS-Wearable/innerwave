@@ -4,11 +4,12 @@ import { TrainingView } from './Training/TrainingView';
 import { TrackerViewModel } from '../viewmodel/TrackerViewModel';
 import { ClockViewModel } from '../viewmodel/ClockViewModel';
 import { MenuSwiper } from './Menu/MenuSwiper';
+import { ColorConstants } from '../constants/ColorConstants';
 
 @Entry
 @Component
 struct Index {
-  @Provide('swiperIndex') swiperIndex: number = 0;
+  @Provide('swiperIndex') swiperIndex: number = 1;
   @Provide('trackerViewModel') trackerViewModel: TrackerViewModel = new TrackerViewModel();
   @Provide('clockViewModel') clockViewModel: ClockViewModel = new ClockViewModel();
 
@@ -28,11 +29,11 @@ struct Index {
       .onChange((index: number) => {
         this.swiperIndex = index;
       })
-      .backgroundColor($r('app.color.pure_black'))
+      .backgroundColor(ColorConstants.PURE_BLACK)
       .indicator(this.arcDotIndicator
         .arcDirection(ArcDirection.SIX_CLOCK_DIRECTION)
-        .itemColor($r('app.color.tundora'))
-        .selectedItemColor($r('app.color.pure_white'))
+        .itemColor(ColorConstants.TUNDORA)
+        .selectedItemColor(ColorConstants.PURE_WHITE)
         .maskColor(new LinearGradient([
           {
             color: Color.Transparent,

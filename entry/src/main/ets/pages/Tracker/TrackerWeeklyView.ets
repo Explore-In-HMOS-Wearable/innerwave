@@ -2,13 +2,16 @@ import { TrackerDisplay } from '../../components/TrackerDisplay';
 import { TrackerGoal } from '../../components/TrackerGoal';
 import { TrackerHeader } from '../../components/TrackerHeader';
 import { TrackerViewModel } from '../../viewmodel/TrackerViewModel';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct TrackerWeeklyView {
   @Consume('trackerViewModel') trackerViewModel: TrackerViewModel;
   title: string = 'Weekly';
-  imagePath: Resource = $r('app.media.calender');
-  color: Resource = $r('app.color.cerulean');
+  imagePath: Resource = IconConstants.CALENDER;
+  color: Resource = ColorConstants.CERULEAN;
   subtitle: string = 'STEPS';
 
   build() {
@@ -37,7 +40,7 @@ export struct TrackerWeeklyView {
       }
       .width('100%')
       .aspectRatio(1)
-      .padding('48px')
+      .padding(SizeConstants.PAD_XL)
 
       Progress({
         value: this.trackerViewModel.data.weeklySteps,
@@ -51,7 +54,7 @@ export struct TrackerWeeklyView {
           enableSmoothEffect: true
         })
         .color(this.color)
-        .backgroundColor($r('app.color.cod_gray'))
+        .backgroundColor(ColorConstants.COD_GRAY)
         .hitTestBehavior(HitTestMode.None)
     }
   }

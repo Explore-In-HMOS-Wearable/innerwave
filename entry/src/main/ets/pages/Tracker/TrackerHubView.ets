@@ -6,6 +6,9 @@ import { TrackerHeader } from '../../components/TrackerHeader';
 import { TrackerDisplay } from '../../components/TrackerDisplay';
 import { ClockViewModel } from '../../viewmodel/ClockViewModel';
 import { common } from '@kit.AbilityKit';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct TrackerHubView {
@@ -13,8 +16,8 @@ export struct TrackerHubView {
   @Consume('clockViewModel') clockViewModel: ClockViewModel;
 
   title: string = 'Innerwave';
-  imagePath: Resource = $r('app.media.bolt');
-  iconColor: Resource = $r('app.color.international_orange');
+  imagePath: Resource = IconConstants.ACTIVITY;
+  iconColor: Resource = ColorConstants.INTERNATIONAL_ORANGE;
 
   @State private hrViewModel: HeartRateViewModel = new HeartRateViewModel();
 
@@ -58,7 +61,7 @@ export struct TrackerHubView {
       }
       .width('100%')
       .aspectRatio(1)
-      .padding('64px')
+      .padding(SizeConstants.PAD_XXL)
 
       Stack() {
         Progress({
@@ -72,8 +75,8 @@ export struct TrackerHubView {
             strokeWidth: '16px',
             enableSmoothEffect: true
           })
-          .color($r('app.color.cerulean'))
-          .backgroundColor($r('app.color.cod_gray'))
+          .color(ColorConstants.CERULEAN)
+          .backgroundColor(ColorConstants.COD_GRAY)
           .hitTestBehavior(HitTestMode.None)
 
         Progress({
@@ -87,8 +90,8 @@ export struct TrackerHubView {
             strokeWidth: '16px',
             enableSmoothEffect: true
           })
-          .color($r('app.color.chateau_green'))
-          .backgroundColor($r('app.color.cod_gray'))
+          .color(ColorConstants.CHATEAU_GREEN)
+          .backgroundColor(ColorConstants.COD_GRAY)
           .hitTestBehavior(HitTestMode.None)
       }
     }

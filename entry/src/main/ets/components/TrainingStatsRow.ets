@@ -1,26 +1,27 @@
-import { TrainingItem } from '../model/TrainingItem';
+import { TrainingModel } from '../model/TrainingModel';
 import { TrainingStatsItem } from './TrainingStatsItem';
+import { IconConstants } from '../constants/IconConstants';
 
 @Component
 export struct TrainingStatsRow {
-  @Prop item: TrainingItem;
+  @Prop item: TrainingModel;
 
   build() {
     Row() {
       TrainingStatsItem({
-        icon: $r('app.media.bolt'),
+        icon: IconConstants.BOLT,
         label: 'Difficulty',
         value: this.item.difficulty
       })
 
       TrainingStatsItem({
-        icon: $r('app.media.sun_max'),
+        icon: IconConstants.SUN_MAX,
         label: 'Calories',
         value: this.item.calories
       })
 
       TrainingStatsItem({
-        icon: $r('app.media.clock'),
+        icon: IconConstants.CLOCK,
         label: 'Time',
         value: this.item.duration
       })

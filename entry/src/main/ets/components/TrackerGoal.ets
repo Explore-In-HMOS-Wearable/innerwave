@@ -1,3 +1,6 @@
+import { ColorConstants } from '../constants/ColorConstants';
+import { SizeConstants } from '../constants/SizeConstants';
+
 @Component
 export struct TrackerGoal {
   @Prop goal: number = 0;
@@ -5,10 +8,10 @@ export struct TrackerGoal {
   @Prop color: Resource;
 
   build() {
-    Column({ space: $r('app.float.pad_mini') }) {
+    Column({ space: SizeConstants.PAD_MINI }) {
       Text(`Goal: ${this.goal}`)
         .fontSize($r('app.float.paragraph'))
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
 
       Text(`${this.progress}% Completed`)
         .fontSize($r('app.float.content'))

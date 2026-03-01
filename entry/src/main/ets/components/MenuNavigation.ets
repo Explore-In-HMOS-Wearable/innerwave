@@ -1,3 +1,7 @@
+import { ColorConstants } from '../constants/ColorConstants';
+import { IconConstants } from '../constants/IconConstants';
+import { SizeConstants } from '../constants/SizeConstants';
+
 @Component
 export struct MenuNavigation {
   @Consume('swiperIndex') swiperIndex: number;
@@ -7,25 +11,25 @@ export struct MenuNavigation {
   targetIndex: number = 0;
 
   build() {
-    Row({ space: 8 }) {
+    Row({ space: SizeConstants.PAD_MINI }) {
       Image(this.icon)
         .width('32px')
         .aspectRatio(1)
-        .fillColor($r('app.color.pure_white'))
+        .fillColor(ColorConstants.PURE_WHITE)
 
       Text(this.label)
         .fontSize($r('app.float.subtitle'))
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
 
       Blank()
 
-      Image($r('app.media.chevron_right'))
+      Image(IconConstants.CHEVRON_RIGHT)
         .width('16px')
         .aspectRatio(1)
-        .fillColor($r('app.color.pure_white'))
+        .fillColor(ColorConstants.PURE_WHITE)
     }
     .width('100%')
-    .padding($r('app.float.pad_small'))
+    .padding(SizeConstants.PAD_SMALL)
     .onClick(() => {
       this.getUIContext().animateTo({
         duration: 500,

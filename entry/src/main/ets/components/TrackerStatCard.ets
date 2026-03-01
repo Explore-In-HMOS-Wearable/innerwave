@@ -1,3 +1,6 @@
+import { ColorConstants } from '../constants/ColorConstants';
+import { SizeConstants } from '../constants/SizeConstants';
+
 @Component
 export struct TrackerStatCard {
   @Prop value: string = '';
@@ -14,16 +17,16 @@ export struct TrackerStatCard {
         .objectFit(ImageFit.Contain)
 
       Blank()
-        .height($r('app.float.pad_mini'))
+        .height(SizeConstants.PAD_MINI)
 
       Text(this.value)
         .fontSize($r('app.float.subtitle'))
         .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
 
       Text(this.unit)
         .fontSize($r('app.float.paragraph'))
-        .fontColor($r('app.color.tundora'))
+        .fontColor(ColorConstants.TUNDORA)
     }
   }
 }

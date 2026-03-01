@@ -1,4 +1,7 @@
 import { AudioService } from '../../services/TrainingMusicService';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct SettingsSoundView {
@@ -11,11 +14,11 @@ export struct SettingsSoundView {
       Column() {
         Text('Settings')
           .fontSize($r('app.float.content'))
-          .fontColor($r('app.color.international_orange'))
+          .fontColor(ColorConstants.INTERNATIONAL_ORANGE)
         Blank()
         Column() {
           Text('Volume')
-            .fontColor($r('app.color.pure_white'))
+            .fontColor(ColorConstants.PURE_WHITE)
             .fontSize($r('app.float.paragraph'))
 
           Blank()
@@ -26,7 +29,7 @@ export struct SettingsSoundView {
               max: 100,
               style: SliderStyle.InSet
             })
-              .selectedColor($r('app.color.international_orange'))
+              .selectedColor(ColorConstants.INTERNATIONAL_ORANGE)
               .layoutWeight(1)
               .onChange(v => {
                 this.volume = v;
@@ -35,7 +38,7 @@ export struct SettingsSoundView {
 
             Text(`${Math.round(this.volume)}%`)
               .fontSize($r('app.float.paragraph'))
-              .fontColor($r('app.color.tundora'))
+              .fontColor(ColorConstants.TUNDORA)
               .width('60px')
           }
         }
@@ -45,19 +48,19 @@ export struct SettingsSoundView {
         Blank()
 
         Button({ type: ButtonType.Capsule }) {
-          Image($r('app.media.chevron_left'))
-            .fillColor($r('app.color.pure_white'))
+          Image(IconConstants.CHEVRON_LEFT)
+            .fillColor(ColorConstants.PURE_WHITE)
             .width('30px')
             .aspectRatio(1)
         }
-        .padding($r('app.float.pad_small'))
-        .backgroundColor($r('app.color.cod_gray'))
+        .padding(SizeConstants.PAD_SMALL)
+        .backgroundColor(ColorConstants.COD_GRAY)
         .onClick(() => this.settingsStack.pop())
       }
       .width('100%')
       .aspectRatio(1)
-      .background($r('app.color.pure_black'))
-      .padding('32px')
+      .background(ColorConstants.PURE_BLACK)
+      .padding(SizeConstants.PAD_LARGE)
     }
     .hideTitleBar(true)
     .hideBackButton(true)

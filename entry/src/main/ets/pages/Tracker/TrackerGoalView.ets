@@ -1,5 +1,8 @@
 import { TrackerDisplay } from '../../components/TrackerDisplay';
 import { TrackerViewModel } from '../../viewmodel/TrackerViewModel';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { IconConstants } from '../../constants/IconConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct TrackerGoalView {
@@ -11,19 +14,19 @@ export struct TrackerGoalView {
 
   build() {
     Column() {
-      Row({ space: $r('app.float.pad_mini') }) {
-        Image($r('app.media.repeat'))
+      Row({ space: SizeConstants.PAD_MINI }) {
+        Image(IconConstants.REPEAT)
           .width('32px')
           .aspectRatio(1)
-          .fillColor($r('app.color.pure_white'))
+          .fillColor(ColorConstants.PURE_WHITE)
 
         Text(this.trackerViewModel.selectedIndex === 0 ? 'Daily Goal' : 'Weekly Goal')
           .fontSize($r('app.float.paragraph'))
-          .fontColor($r('app.color.pure_white'))
+          .fontColor(ColorConstants.PURE_WHITE)
       }
       .borderRadius(999)
-      .padding($r('app.float.pad_small'))
-      .backgroundColor($r('app.color.mine_shaft'))
+      .padding(SizeConstants.PAD_SMALL)
+      .backgroundColor(ColorConstants.MINE_SHAFT)
       .onClick(() => {
         this.trackerViewModel.selectedIndex = this.trackerViewModel.selectedIndex === 0 ? 1 : 0;
         this.trackerViewModel.initTempGoal();
@@ -33,12 +36,12 @@ export struct TrackerGoalView {
         Stack({ alignContent: Alignment.Center }) {
           Circle().width('64px')
             .height('64px')
-            .fill($r('app.color.cod_gray'))
+            .fill(ColorConstants.COD_GRAY)
 
-          Image($r('app.media.minus'))
+          Image(IconConstants.MINUS)
             .width('32px')
             .height('32px')
-            .fillColor(Color.White)
+            .fillColor(ColorConstants.PURE_WHITE)
         }
         .onClick(() => this.trackerViewModel.updateTempGoal(false))
 
@@ -51,22 +54,22 @@ export struct TrackerGoalView {
           Circle()
             .width('64px')
             .height('64px')
-            .fill($r('app.color.cod_gray'))
+            .fill(ColorConstants.COD_GRAY)
 
-          Image($r('app.media.plus'))
+          Image(IconConstants.PLUS)
             .width('32px')
             .height('32px')
-            .fillColor(Color.White)
+            .fillColor(ColorConstants.PURE_WHITE)
         }
         .onClick(() => this.trackerViewModel.updateTempGoal(true))
       }
       .justifyContent(FlexAlign.SpaceBetween).width('100%')
 
-      Row({ space: $r('app.float.pad_mini') }) {
+      Row({ space: SizeConstants.PAD_MINI }) {
         Text('Cancel')
-          .fontColor($r('app.color.scarlet'))
+          .fontColor(ColorConstants.SCARLET)
           .fontSize($r('app.float.paragraph'))
-          .padding($r('app.float.pad_small'))
+          .padding(SizeConstants.PAD_SMALL)
           .visibility(this.trackerViewModel.isModified ? Visibility.Visible : Visibility.Hidden)
           .onClick(() => {
             this.trackerViewModel.cancelGoal();
@@ -74,11 +77,11 @@ export struct TrackerGoalView {
 
         Text('Confirm')
           .borderRadius(999)
-          .backgroundColor(this.trackerViewModel.isModified ? $r('app.color.mine_shaft') : $r('app.color.cod_gray'))
-          .fontColor(this.trackerViewModel.isModified ? $r('app.color.pure_white') : $r('app.color.tundora'))
+          .backgroundColor(this.trackerViewModel.isModified ? ColorConstants.MINE_SHAFT : ColorConstants.COD_GRAY)
+          .fontColor(this.trackerViewModel.isModified ? ColorConstants.PURE_WHITE : ColorConstants.TUNDORA)
           .fontSize($r('app.float.paragraph'))
           .fontWeight(FontWeight.Medium)
-          .padding($r('app.float.pad_small'))
+          .padding(SizeConstants.PAD_SMALL)
           .enabled(this.trackerViewModel.isModified)
           .onClick(() => {
             this.trackerViewModel.confirmGoal();
@@ -86,11 +89,6 @@ export struct TrackerGoalView {
       }
     }
     .justifyContent(FlexAlign.SpaceBetween)
-    .padding({
-      top: '48px',
-      bottom: '48px',
-      left: '32px',
-      right: '32px'
-    })
+    .padding(SizeConstants.PAD_INNER)
   }
 }

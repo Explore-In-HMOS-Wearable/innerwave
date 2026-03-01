@@ -1,7 +1,10 @@
+// TrainingDetailView.ets
 import { trainingStack } from '../../navigation/TrainingNav';
-import { TrainingItem } from '../../model/TrainingItem';
+import { TrainingModel } from '../../model/TrainingModel';
 import { TrainingStatsRow } from '../../components/TrainingStatsRow';
 import { TrainingActionButtons } from '../../components/TrainingActionButton';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Builder
 export function TrainingDetailPageBuilder(): void {
@@ -10,30 +13,31 @@ export function TrainingDetailPageBuilder(): void {
 
 @Component
 struct TrainingDetailView {
-  @State item: TrainingItem = new TrainingItem('training', 'Training', '0 min', 'Easy', '~0');
+  @State item: TrainingModel = new TrainingModel();
 
   aboutToAppear() {
-    const it: TrainingItem | null = this._readItemParam('TrainingDetailPage');
+    const it: TrainingModel | null = this._readItemParam('TrainingDetailPage');
     if (it !== null) {
       this.item = it;
     }
   }
 
-  private _readItemParam(pageName: string): TrainingItem | null {
+  private _readItemParam(pageName: string): TrainingModel | null {
     const params: Object[] = trainingStack.getParamByName(pageName) as Object[];
     if (params.length === 0) {
       return null;
     }
     const v: Object = params[params.length - 1];
-    return v instanceof TrainingItem ? v : null;
+
+    return v instanceof TrainingModel ? v : null;
   }
 
   build() {
     NavDestination() {
       Column() {
-        Text(this.item.title)
+        Text(this.item.name)
           .fontSize($r('app.float.headline'))
-          .fontColor($r('app.color.pure_white'))
+          .fontColor(ColorConstants.PURE_WHITE)
           .fontWeight(FontWeight.Bold)
 
         TrainingStatsRow({ item: this.item })
@@ -43,14 +47,11 @@ struct TrainingDetailView {
           onBack: () => trainingStack.pop()
         })
       }
-      .backgroundColor($r('app.color.pure_black'))
+      .backgroundColor(ColorConstants.PURE_BLACK)
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
       .aspectRatio(1)
-      .padding({
-        top: '64px',
-        bottom: '64px'
-      })
+      .padding(SizeConstants.PAD_VERTICAL_XXL)
     }
     .hideTitleBar(true)
     .hideBackButton(true)

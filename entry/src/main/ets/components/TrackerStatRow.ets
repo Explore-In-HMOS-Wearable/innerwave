@@ -1,4 +1,6 @@
 import { TrackerStatCard } from './TrackerStatCard';
+import { ColorConstants } from '../constants/ColorConstants';
+import { IconConstants } from '../constants/IconConstants';
 
 @Component
 export struct TrackerStatRow {
@@ -7,26 +9,26 @@ export struct TrackerStatRow {
   @Prop heartRate: string;
 
   build() {
-    Row({ space: '48px' }) {
+    Row({ space: '24px' }) {
       TrackerStatCard({
         value: this.calories,
         unit: 'kcal',
-        icon: $r('app.media.sun_max'),
-        iconColor: $r('app.color.international_orange')
+        icon: IconConstants.FIRE,
+        iconColor: ColorConstants.INTERNATIONAL_ORANGE
       })
 
       TrackerStatCard({
         value: this.distance,
         unit: 'km',
-        icon: $r('app.media.route_plan'),
-        iconColor: $r('app.color.cerulean')
+        icon: IconConstants.ROUTE_PLAN,
+        iconColor: ColorConstants.CERULEAN
       })
 
       TrackerStatCard({
         value: this.heartRate,
         unit: 'bpm',
-        icon: $r('app.media.heart'),
-        iconColor: $r('app.color.scarlet')
+        icon: IconConstants.HEART_FILL,
+        iconColor: ColorConstants.SCARLET
       })
     }
   }

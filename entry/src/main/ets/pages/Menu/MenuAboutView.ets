@@ -1,4 +1,6 @@
 import { MenuAboutItem } from '../../components/MenuAboutItem';
+import { ColorConstants } from '../../constants/ColorConstants';
+import { SizeConstants } from '../../constants/SizeConstants';
 
 @Component
 export struct MenuAboutView {
@@ -6,7 +8,7 @@ export struct MenuAboutView {
     Column() {
       Text('About')
         .fontSize($r('app.float.title'))
-        .fontColor($r('app.color.international_orange'))
+        .fontColor(ColorConstants.INTERNATIONAL_ORANGE)
 
       Blank()
 
@@ -37,11 +39,6 @@ export struct MenuAboutView {
     }
     .width('100%')
     .aspectRatio(1)
-    .padding({
-      top: '32px',
-      bottom: '32px',
-      left: '64px',
-      right: '64px'
-    })
+    .padding(SizeConstants.PAD_SCREEN)
   }
 }

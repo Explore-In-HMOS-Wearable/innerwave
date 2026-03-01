@@ -1,4 +1,5 @@
 import { ArcDirection, ArcDotIndicator, ArcSwiper, ArcSwiperAttribute } from '@kit.ArkUI';
+import { ColorConstants } from '../../constants/ColorConstants';
 import { SettingsPage } from '../Settings/SettingsView';
 import { MenuAboutView } from './MenuAboutView';
 import { MenuView } from './MenuView';
@@ -22,8 +23,8 @@ export struct MenuSwiper {
     })
     .indicator(this.arcDotIndicator
       .arcDirection(ArcDirection.NINE_CLOCK_DIRECTION)
-      .itemColor($r('app.color.tundora'))
-      .selectedItemColor($r('app.color.pure_white'))
+      .itemColor(ColorConstants.TUNDORA)
+      .selectedItemColor(ColorConstants.PURE_WHITE)
       .maskColor(new LinearGradient([
         {
           color: Color.Transparent,

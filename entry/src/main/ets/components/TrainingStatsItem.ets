@@ -1,25 +1,29 @@
+import { ColorConstants } from '../constants/ColorConstants';
+import { IconConstants } from '../constants/IconConstants';
+import { SizeConstants } from '../constants/SizeConstants';
+
 @Component
 export struct TrainingStatsItem {
-  icon: Resource = $r('app.media.bolt');
+  icon: Resource = IconConstants.BOLT;
   label: string = '';
   value: string = '';
 
   build() {
-    Row({ space: $r('app.float.pad_mini') }) {
+    Row({ space: SizeConstants.PAD_MINI }) {
       Image(this.icon)
         .width('48px')
         .aspectRatio(1)
-        .fillColor($r('app.color.pure_white'))
+        .fillColor(ColorConstants.PURE_WHITE)
         .objectFit(ImageFit.Contain)
 
       Column() {
         Text(this.label)
           .fontSize($r('app.float.paragraph'))
-          .fontColor($r('app.color.tundora'))
+          .fontColor(ColorConstants.TUNDORA)
 
         Text(this.value)
           .fontSize($r('app.float.content'))
-          .fontColor($r('app.color.pure_white'))
+          .fontColor(ColorConstants.PURE_WHITE)
           .fontWeight(FontWeight.Bold)
       }
       .alignItems(HorizontalAlign.Start)

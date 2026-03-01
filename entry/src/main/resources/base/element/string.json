@@ -15,6 +15,10 @@
     {
       "name": "reason_health_data",
       "value": "Permission is required to track your heart rate."
+    },
+    {
+      "name": "reason_vibration",
+      "value": "Permission is required to vibrate the device."
     }
   ]
 }

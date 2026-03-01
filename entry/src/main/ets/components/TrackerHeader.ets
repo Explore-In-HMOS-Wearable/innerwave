@@ -1,3 +1,6 @@
+import { ColorConstants } from '../constants/ColorConstants';
+import { SizeConstants } from '../constants/SizeConstants';
+
 @Component
 export struct TrackerHeader {
   @Prop title: string;
@@ -5,7 +8,7 @@ export struct TrackerHeader {
   @Prop iconColor: Resource;
 
   build() {
-    Column({ space: $r('app.float.pad_mini') }) {
+    Column({ space: SizeConstants.PAD_MINI }) {
       Image(this.imagePath)
         .width('36px')
         .aspectRatio(1)
@@ -13,7 +16,7 @@ export struct TrackerHeader {
 
       Text(this.title)
         .fontSize($r('app.float.paragraph'))
-        .fontColor($r('app.color.pure_white'))
+        .fontColor(ColorConstants.PURE_WHITE)
     }
   }
 }
